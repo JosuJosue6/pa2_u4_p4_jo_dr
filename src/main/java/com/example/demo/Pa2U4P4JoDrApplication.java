@@ -9,5 +9,11 @@ public class Pa2U4P4JoDrApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U4P4JoDrApplication.class, args);
 	}
+	/*
+	 * FUNCIONALIDAD CRUD PARA UNA ENTIDAD PERSONAL
+	 * 
+	 */
+	
+	
 
 }
