@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmls:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Vist Prop</title>
+
+</head>
+
+<body>                 <!-- url del service / id( del item.(lo que es)) -->
+	<form th:action="@{/propietarios/actualizar/{id}(id=${propietario.id})}" th:object="${propietario}" th:method="PUT">
+		<!-- mandolo que quiero que haga mi FORM, mando mi url -->
+		<table><!-- comentario -->
+			<tr>
+				<td>
+					<label>ID:</label>
+
+				</td>
+				<td>
+					<input type="text" th:field="${propietario.id}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>NOMBRE:</label>
+				</td>
+				<td>
+					<input type="text" th:field="${propietario.nombre}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>APELLIDO:</label>
+				</td>
+				<td>
+					<input type="text" th:field="${propietario.apellido}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>CEDULA:</label>
+				</td>
+				<td>
+					<input type="text" th:field="${propietario.cedula}">
+				</td>
+			</tr>
+		</table>
+		<input type="submit" value="Actualizar"> <!-- Boton  -->
+	</form> <!-- Enviar informacion dentro de la vista, debe estar como formulario  -->
+	<!-- Es decir lo envio al controlador y siempre UN BOTON QUE ME DISPARE UN EVENTO  -->
+</body>
+
+</html>

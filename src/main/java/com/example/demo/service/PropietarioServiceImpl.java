@@ -9,6 +9,9 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 import com.example.demo.repository.IPropietarioRepository;
 import com.example.demo.repository.modelo.Propietario;
 
+import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
+
 @Service
 public class PropietarioServiceImpl implements IPropietarioService{
 
@@ -25,6 +28,7 @@ public class PropietarioServiceImpl implements IPropietarioService{
 	}
 
 	@Override
+	@Transactional(value = TxType.REQUIRED)
 	public void actualizar(Propietario propietario) {
 		// TODO Auto-generated method stub
 		this.propietarioRepository.actualizar(propietario);

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html xmls:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -14,7 +14,27 @@
 
 <body>
 	<h1>Hola Mundo</h1>
-
+	<p>Primer parrafo de vista en WEB</p>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Cedula</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="propietario:${propietarios}">
+				<td th:text="${propietario.id}"></td>
+				<td th:text="${propietario.nombre}"></td>
+				<td th:text="${propietario.apellido}"></td>
+				<td th:text="${propietario.cedula}"></td>
+			</tr>
+			
+		</tbody>
+   
+	</table>
 
 
 </body>
