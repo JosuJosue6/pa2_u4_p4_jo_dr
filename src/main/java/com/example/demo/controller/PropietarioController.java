@@ -2,11 +2,15 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,6 +20,8 @@ import com.example.demo.service.IPropietarioService;
 @Controller
 @RequestMapping("/propietarios")
 public class PropietarioController {
+	
+	//private static Logger LOG = (Logger) LogManager.getLogger();
 	
 	@Autowired
 	private IPropietarioService iPropietarioService;
@@ -48,10 +54,34 @@ public class PropietarioController {
 	public String actualizarPropietario(@PathVariable("idPropietario") Integer id, Propietario propietario){
 		
 		this.iPropietarioService.actualizar(propietario);
-		
-		
-		
 		return "redirect:/propietarios/buscar";
+	}
+	
+	//Siempre String porque redirecciona a la vista
+	//http://localhost:8080/consecionario/propietarios/borrar/1
+	@DeleteMapping("/borrar/{idPropietario}")
+	public String eliminarPorID(@PathVariable("idPropietario") Integer id) {
+		this.iPropietarioService.borrarPorId(id);
+		//Redirecciona a la misma lista
+		return "redirect:/propietarios/buscar";
+	}
+	
+	/*@DeleteMapping("/borrar/{idPropietario}")
+    public String eliminarPorId(@PathVariable("idPropietario")Integer id ){
+        this.propietarioService.remover(id);
+        return "redirect:/propietarios/buscar";
+    }*/
+	
+	@PostMapping("/guardar")
+	public String insertarPropietario(Propietario propietario) {
+		this.iPropietarioService.agregar(propietario);
+		return "redirect:/propietarios/buscar";
+	}
+	
+	//pagina de redireccionamiento que muestre la pagina vista propietarionuevo
+	@GetMapping("/nuevo")
+	public String paginaNuevoPropietario(Propietario propietario) {//siempre usar el propietario por tema de orden
+		return "vistaPropietarioNuevo";
 	}
 
 }

@@ -46,8 +46,8 @@ public class PropietarioRepositoryImpl implements IPropietarioRepository {
 	@Transactional(value = TxType.MANDATORY)
 	public void eliminarPorId(Integer id) {
 		// TODO Auto-generated method stub
-
-		this.entityManager.remove(id);
+		Propietario propietario= this.seleccionarPorId(id);
+		this.entityManager.remove(propietario);
 	}
 
 	@Override

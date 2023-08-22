@@ -20,6 +20,7 @@ public class PropietarioServiceImpl implements IPropietarioService{
 
 	@Override
 	//@Transactional
+	@Transactional(value = TxType.REQUIRED)
 	public void agregar(Propietario propietario) {
 		// TODO Auto-generated method stub
 		System.out.println("Service "+TransactionSynchronizationManager.isActualTransactionActive());
@@ -42,6 +43,7 @@ public class PropietarioServiceImpl implements IPropietarioService{
 	}
 
 	@Override
+	@Transactional(value = TxType.REQUIRES_NEW)
 	public void borrarPorId(Integer id) {
 		// TODO Auto-generated method stub
 		this.propietarioRepository.eliminarPorId(id);
